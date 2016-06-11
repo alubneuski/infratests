@@ -1,0 +1,55 @@
+require 'spec_helper'
+
+describe 'Testing AutoScaling Groups' do
+
+  before :each do
+   @as = auto_scaling_group('ucwt-zk1-zookeeperCluster-H9OJJ5WF1WSI')
+  end
+
+    it "Check Default Cooldown" do
+      @as.should be_has_default_cooldown(300) 
+    end
+
+    it "Check health check grace period" do
+      @as.should be_has_health_check_grace_period(0)
+    end
+
+    it "Check desired capacity" do
+      @as.should be_has_desired_capacity(5) 
+    end
+
+    it "Check placement group" do
+      @as.should be_has_placement_group(nil)
+    end
+
+    it "Check min size" do
+      @as.should be_has_min_size(5)
+    end
+
+    it "Check max size" do
+      @as.should be_has_max_size(5)
+    end
+
+    it "Check launch configuration" do
+      @as.should be_has_launch_configuration("ucwt-zk1-zookeeperLaunchConfig-1B79KU3VQTLRA")
+    end
+
+    it "Check availability zone names" do
+      @as.should be_has_availability_zone_names(["us-east-1a","us-east-1b","us-east-1e","us-east-1d"])
+    end
+
+    it "Check load balancer" do
+      @as.should be_has_load_balancers(nil)
+    end
+
+    it "Check for enabled metrics" do
+	metric1 = Aws::AutoScaling::Types::EnabledMetric.new
+	metric1.metric="GroupMinSize"
+	metric1.granularity="1Minute"
+	metric2 = Aws::AutoScaling::Types::EnabledMetric.new
+        metric2.metric="GroupMaxSize" 
+        metric2.granularity="1Minute"
+      @as.should be_has_enabled_metrics([metric1,metric2])
+    end
+
+end

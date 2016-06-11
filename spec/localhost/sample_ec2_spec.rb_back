@@ -1,0 +1,110 @@
+require 'spec_helper'
+
+describe 'the example network' do
+
+  before :each do
+   @ec2 = ec2_instance('i-226540bf')
+  end
+
+    it "instance" do
+      @ec2.should be_ebs_optimized
+    end
+
+    it "instance" do
+      @ec2.should_not be_api_termination_disabled
+    end
+
+    it "instance" do
+      @ec2.should be_x86_64_architecture
+    end
+
+    it "instance" do
+      @ec2.should_not be_i386_architecture
+    end
+
+    it "instance" do
+      @ec2.should_not be_having_paravirtual_virtualization
+    end
+
+    it "instance" do
+      @ec2.should be_having_hvm_virtualization
+    end
+    
+    it "instance" do
+      @ec2.should be_having_xen_hypervisor
+    end
+
+    it "instance" do
+      @ec2.should_not be_having_oracle_vm_hypervisor
+    end
+
+    it "instance" do
+      @ec2.should be_stop_shutdown_behavior
+    end
+
+    it "instance" do
+      @ec2.should_not be_termination_shutdown_behavior
+    end
+ 
+    
+    it "instance" do
+      @ec2.should_not be_monitoring_disabled
+    end
+
+    it "instance" do
+      @ec2.should be_monitoring_enabled
+    end
+ 
+    it "instance" do
+      @ec2.should_not be_monitoring_pending
+    end
+
+    it "instance" do
+      @ec2.should_not be_has_user_data("Hello")
+    end 
+
+    it "instance" do
+      @ec2.should_not be_windows_platform
+    end
+
+    it "instance" do
+      @ec2.should_not be_has_iam_instance_profile_arn("someprofile")
+    end
+
+    it "keyname" do
+      @ec2.should be_has_key_name("AlexL")
+    end
+    
+    it "instancetype" do
+      @ec2.should_not be_has_instance_type("t2-micro")
+    end
+
+    it "sourcedestcheckingdisabled" do
+      @ec2.should_not be_has_source_dest_checking_disabled
+    end
+
+    it "apiterminationdisabled" do
+      @ec2.should_not be_api_termination_disabled
+    end
+    
+    it "elastic" do
+      @ec2.should be_has_elastic_ip
+    end
+
+    it "publicip" do
+      @ec2.should be_has_public_ip
+    end
+
+    it "kernel" do
+      @ec2.should_not be_has_kernel_id("12354")
+    end
+   
+    it "haspublicsubnet" do
+      @ec2.should be_has_public_subnet  
+    end
+   
+    it "ownerid" do
+      @ec2.should be_has_owner_id("UD1M")
+    end
+
+end

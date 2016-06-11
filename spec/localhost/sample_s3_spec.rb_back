@@ -1,0 +1,21 @@
+require 'spec_helper'
+
+describe 'S3' do
+
+  before :each do
+   @s3 = s3_bucket('infra-s3-logs')
+  end
+
+    it "Website " do
+      @s3.should_not be_website
+    end
+
+    it "has logging" do
+      @s3.should be_has_logging
+    end
+
+    it "get bucket policy" do
+      @s3.should_not be_has_bucket_acl("", nil)
+    end
+
+end

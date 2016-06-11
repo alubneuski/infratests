@@ -1,0 +1,37 @@
+require 'spec_helper'
+
+describe 'the example network' do
+
+  before :each do
+   @vpc = vpc('vpc-1f1c287b')
+  end
+
+    it "vpc" do
+      @vpc.should_not be_default_tenancy
+    end
+
+    it "dedicated_tenancy" do
+      @vpc.should be_dedicated_tenancy
+    end
+
+    it "available" do
+      @vpc.should be_available 
+    end
+
+    it "pending" do 
+      @vpc.should_not be_pending
+    end
+
+    it "has_cidr_block" do
+      @vpc.should_not be_has_cidr_block("10.100.0.0/16")
+    end
+
+    it "attached_to_an_internet_gateway" do
+      @vpc.should_not be_attached_to_an_internet_gateway
+    end
+
+    it "attached_to_a_virtual_private_gateway" do
+      @vpc.should be_attached_to_a_virtual_private_gateway
+    end
+
+end

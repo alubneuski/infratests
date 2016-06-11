@@ -1,0 +1,13 @@
+require 'spec_helper'
+
+describe 'the example network' do
+
+  before :each do
+   @vgw = vgw('vpc-2cc8e548')
+  end
+
+    it "vpc" do
+      @vpc.should_not be_default_tenancy
+    end
+
+end

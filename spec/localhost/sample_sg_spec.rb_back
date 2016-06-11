@@ -1,0 +1,24 @@
+require 'spec_helper'
+
+describe 'the example security group' do
+
+  before :each do
+  	@sg = security_group_by_id('sg-df9051a4')
+  end
+
+    it "sg tags" do
+     @sg.should be_have_sg_tag({ "Name" => "VPC" })
+    end
+
+    it "sg should not have have port 80 open" do
+      @sg.should_not be_having_port_open( 80)   
+    end
+
+    it "sg should not have port ssh wide open" do
+      @sg.should_not be_having_port_wide_open(22)
+    end
+
+    it "sg should have 3000 port wide open" do
+      @sg.should be_having_port_open(3000)
+    end
+end

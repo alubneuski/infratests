@@ -1,0 +1,58 @@
+require 'spec_helper'
+
+describe 'the example ELB' do
+
+  before :each do
+   @elb = elb('AppServerELB', 'us-east-1')
+   @elb.setProxy('123')
+  end
+
+  it "SHould be in vpc-e6c39582" do
+   @elb.should be_in_vpc("vpc-e6c39582")
+  end
+
+  it "Should has scheme" do
+    @elb.should be_has_scheme("internal")
+  end
+
+  it "Should has connection draining enabled" do
+    @elb.should be_has_connection_draining_enabled
+  end
+
+  it "Should has connection draining timeout set to 60" do
+    @elb.should be_has_connection_draining_timeout_set_to(300)
+  end
+
+  it "Should has cross zone load balancing enabled" do
+    @elb.should be_has_cross_zone_load_balancing_enabled
+  end
+
+  it "Should have the following availability zones : us-east-1b, us-east-1c" do
+    @elb.should be_has_availability_zones(["us-east-1b", "us-east-1c"])
+  end
+
+  it "Should have 2 availability zone" do
+    @elb.should be_has_number_of_availability_zones(2)
+  end
+
+  it "Should_not have 10 security groups" do
+    @elb.should_not be_has_number_of_security_groups(10)
+  end
+
+  it "Should have the following dns name internal-AppServerELB-1314433261.us-east-1.elb.amazonaws.com" do
+    @elb.should be_has_dns_name ("internal-AppServerELB-1314433261.us-east-1.elb.amazonaws.com")
+  end
+
+  it "Should have subnets" do
+    @elb.should be_has_subnets(["subnet-992398ef", "subnet-edd21ac7"])
+  end
+
+  it "Should have canonical hosted zone name set to nil" do
+   @elb.should be_has_canonical_hosted_zone_name(nil)
+  end
+
+  it "Should have timeout is set to 5" do
+   @elb.should be_has_health_check_timeout(5)
+  end
+
+end

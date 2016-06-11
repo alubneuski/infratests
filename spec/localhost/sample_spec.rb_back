@@ -1,0 +1,19 @@
+require 'spec_helper'
+
+describe 'the example network' do
+
+  before :each do
+   @ec2 = ec2_instance('i-ae431a2a')
+   @ec2.setRegion('us-east-1')
+   @ec2.setProxy('someproxy')
+  end
+
+    it "Check if instance have certain security ID" do
+      @ec2.should be_security_groups_have_sg_id(["sg-7590f50d"])
+    end
+
+    it "Instance should only have the follwing ports open" do
+      @ec2.should be_security_group_having_ports(["22", "28017", "27017", "27018", "27019", "27020", "27021", "27022", "27023", "27024", "27025", "27026", "27027", "27028", "27029", "27030"]) 
+    end
+
+end
