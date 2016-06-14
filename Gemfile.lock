@@ -1,7 +1,7 @@
 PATH
-  remote: /home/alex/code/serverspec-aws-resources
+  remote: /home/alex/code/serverspec-aws
   specs:
-    serverspec-aws-resources (0.0.8)
+    serverspec-aws (0.0.8)
       aws-sdk (>= 2.0.0)
 
 GEM
@@ -56,4 +56,4 @@ DEPENDENCIES
   aws-sdk
   rake
   serverspec
-  serverspec-aws-resources!
+  serverspec-aws!

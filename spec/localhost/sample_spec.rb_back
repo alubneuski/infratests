@@ -13,7 +13,7 @@ describe 'the example network' do
     end
 
     it "Instance should only have the follwing ports open" do
-      @ec2.should be_security_group_having_ports(["22", "28017", "27017", "27018", "27019", "27020", "27021", "27022", "27023", "27024", "27025", "27026", "27027", "27028", "27029", "27030"]) 
+      @ec2.should be_security_group_has_ports(["22", "28017", "27017", "27018", "27019", "27020", "27021", "27022", "27023", "27024", "27025", "27026", "27027", "27028", "27029", "27030"]) 
     end
 
 end

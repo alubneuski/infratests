@@ -23,19 +23,19 @@ describe 'the example network' do
     end
 
     it "instance" do
-      @ec2.should_not be_having_paravirtual_virtualization
+      @ec2.should_not be_has_paravirtual_virtualization
     end
 
     it "instance" do
-      @ec2.should be_having_hvm_virtualization
+      @ec2.should be_has_hvm_virtualization
     end
     
     it "instance" do
-      @ec2.should be_having_xen_hypervisor
+      @ec2.should be_has_xen_hypervisor
     end
 
     it "instance" do
-      @ec2.should_not be_having_oracle_vm_hypervisor
+      @ec2.should_not be_has_oracle_vm_hypervisor
     end
 
     it "instance" do

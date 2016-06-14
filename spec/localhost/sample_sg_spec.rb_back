@@ -11,14 +11,14 @@ describe 'the example security group' do
     end
 
     it "sg should not have have port 80 open" do
-      @sg.should_not be_having_port_open( 80)   
+      @sg.should_not be_has_port_open( 80)   
     end
 
     it "sg should not have port ssh wide open" do
-      @sg.should_not be_having_port_wide_open(22)
+      @sg.should_not be_has_port_wide_open(22)
     end
 
     it "sg should have 3000 port wide open" do
-      @sg.should be_having_port_open(3000)
+      @sg.should be_has_port_open(3000)
     end
 end

@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
 gem 'serverspec'
-gem 'serverspec-aws-resources', :path => '/home/alex/code/serverspec-aws-resources'
+gem 'serverspec-aws', :path => '/home/alex/code/serverspec-aws'
 gem 'rake'
 gem 'aws-sdk'

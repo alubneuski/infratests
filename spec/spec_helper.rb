@@ -1,6 +1,4 @@
 require 'serverspec'
-require 'serverspec-aws-resources'
+require 'serverspec-aws'
 
 set :backend, :exec
-
-@http_proxy = "http://someproxy.com"
